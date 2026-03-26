@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 
 function App() {
 
   const [film, setFilm] = useState([])
+  const [serie, setSerie] = useState([])
   const [search, setSearch] = useState('')
 
   const API_KEY = import.meta.env.VITE_API_KEY
   const api_url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(search.trim())}&language=it-IT`
 
+  const api_url_series = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=it_IT&query=${encodeURIComponent(search.trim())}`
+  
+  
 
   /*   useEffect(() => {
       fetch(api_url)
@@ -27,9 +31,27 @@ function App() {
     fetch(api_url)
       .then(res => res.json())
       .then(data => {
-        console.log(data.results);
+        /* console.log(data.results); */
         setFilm(data.results)
       })
+  }
+
+  function searchSerie() {
+    if (search === '') return
+
+    fetch(api_url_series)
+      .then(res => res.json())
+      .then(data => {
+       /*  console.log(data.results); */
+
+        setSerie(data.results)
+      })
+  }
+
+  function handleSearch() {
+    if (search.trim() === '') return;
+    searchFilm();
+    searchSerie();
   }
 
   const getFlag = (lang) => {
@@ -56,10 +78,10 @@ function App() {
   return (
     <>
       <header>
-        <navbar>
+        <nav>
           <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
-          <button className="btn btn-primary" onClick={searchFilm}>Search Film</button>
-        </navbar>
+          <button className="btn btn-primary" onClick={handleSearch}>Search Film</button>
+        </nav>
       </header>
 
       <main>
@@ -71,6 +93,19 @@ function App() {
                 <p>{singleFilm.original_title}</p>
                 <p>{getFlag(singleFilm.original_language)}</p>
                 <p>{singleFilm.vote_average}</p>
+              </div>
+            ))}
+          </div>
+        </div >
+
+        <div className="container">
+          <div className="row">
+            {serie.map((singleSerie) => (
+              <div className="col-4" key={singleSerie.id}>
+                <h2>{singleSerie.name}</h2>
+                <p>{singleSerie.original_name}</p>
+                <p>{getFlag(singleSerie.original_language)}</p>
+                <p>{singleSerie.vote_average}</p>
               </div>
             ))}
           </div>
