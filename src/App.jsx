@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+import AppHeader from "./components/AppHeader";
 
 
 
@@ -14,15 +15,6 @@ function App() {
 
   const api_url_series = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=it_IT&query=${encodeURIComponent(search.trim())}`
 
-  /*   useEffect(() => {
-      fetch(api_url)
-        .then(res => res.json())
-        .then(data => {
-          console.log(data.results);
-          setFilm(data.results)
-        })
-  
-    }, []) */
 
   function searchFilm() {
     if (search === '') return
@@ -47,7 +39,8 @@ function App() {
       })
   }
 
-  function handleSearch() {
+  function handleSearch(e) {
+    e.preventDefault()
     if (search.trim() === '') return;
     searchFilm();
     searchSerie();
@@ -89,12 +82,8 @@ function App() {
 
   return (
     <>
-      <header>
-        <nav>
-          <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
-          <button className="btn btn-primary" onClick={handleSearch}>Search</button>
-        </nav>
-      </header>
+
+      <AppHeader search={search} setSearch={setSearch} handleSearch={handleSearch} />
 
       <main>
         <div className="container">
