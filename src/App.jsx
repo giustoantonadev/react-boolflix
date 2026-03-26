@@ -1,5 +1,6 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+
 
 
 function App() {
@@ -12,8 +13,6 @@ function App() {
   const api_url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(search.trim())}&language=it-IT`
 
   const api_url_series = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=it_IT&query=${encodeURIComponent(search.trim())}`
-
-
 
   /*   useEffect(() => {
       fetch(api_url)
@@ -73,6 +72,19 @@ function App() {
     return <span>{lang}</span>;
   };
 
+  const showStars = (vote) => {
+    const rating = Math.ceil(vote / 2)
+    const stars = []
+
+    for (let i = 1; i <= 5; i++) {
+
+      const starClass = i <= rating ? "fa-solid fa-star" : "fa-regular fa-star"
+      stars.push(
+        <i key={i} className={starClass} style={{ color: "#FFD43B" }}></i>
+      );
+    }
+    return stars
+  }
 
 
   return (
@@ -80,7 +92,7 @@ function App() {
       <header>
         <nav>
           <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
-          <button className="btn btn-primary" onClick={handleSearch}>Search Film</button>
+          <button className="btn btn-primary" onClick={handleSearch}>Search</button>
         </nav>
       </header>
 
@@ -93,7 +105,7 @@ function App() {
                 <p>{singleFilm.original_title}</p>
                 <p> <img src={`https://image.tmdb.org/t/p/w342${singleFilm.poster_path}`} alt="film poster" /></p>
                 <p>{getFlag(singleFilm.original_language)}</p>
-                <p>{singleFilm.vote_average}</p>
+                <p>{showStars(singleFilm.vote_average)}</p>
               </div>
             ))}
           </div>
@@ -107,7 +119,7 @@ function App() {
                 <p>{singleSerie.original_name}</p>
                 <p> <img src={`https://image.tmdb.org/t/p/w342${singleSerie.poster_path}`} alt="serie poster" /></p>
                 <p>{getFlag(singleSerie.original_language)}</p>
-                <p>{singleSerie.vote_average}</p>
+                <p>{showStars(singleSerie.vote_average)}</p>
               </div>
             ))}
           </div>
