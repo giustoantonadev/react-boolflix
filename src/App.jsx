@@ -5,6 +5,7 @@ import AppHeader from "./components/AppHeader";
 import AppMain from "./components/AppMain";
 import MoviePage from "./pages/MoviePage";
 
+
 function App() {
 
   const [film, setFilm] = useState([])
@@ -72,8 +73,7 @@ function App() {
       <Routes>
         <Route path='/' element={<AppMain film={film} serie={serie} />} />
         <Route path='/search' element={<AppMain film={film} serie={serie} />} />
-{/*         <Route path='/movie/:id' element={<MoviePage type='movie' />} />
-        <Route path='/tv/:id' element={<MoviePage type='tv' />} /> */}
+        <Route path='/movie/:id' element={<MoviePage film={film} />} />
       </Routes>
 
     </>

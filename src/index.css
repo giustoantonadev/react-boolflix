@@ -1,13 +1,14 @@
 @import url('bootstrap');
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body{
-  background-color: grey;
+body {
+  background-color: #141414;
+  color: white
 }
 
 .card {
@@ -33,4 +34,74 @@ body{
 
 .card:hover .overlay {
   opacity: 1;
+}
+
+.movie-navbar {
+  background-color: #141414;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  color: #e50914 !important;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.search-input {
+  background-color: #222;
+  border: none;
+  color: white;
+}
+
+.search-input::placeholder {
+  color: #aaa
+}
+
+.search-input::focus {
+  background-color: #222;
+  color: white;
+  box-shadow: none;
+  border: 1px solid #e50914;
+}
+
+.btn-danger {
+  background-color: #e50914;
+  border: none;
+}
+
+.btn-danger::hover {
+  background-color: #b20710;
+}
+
+.movie-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.movie-poster {
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  max-height: 600px;
+  object-fit: cover;
+}
+
+.movie.info-box {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.movie-overview {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #f1f1f1;
+}
+
+.movie-page {
+  min-height: 100vh;
 }

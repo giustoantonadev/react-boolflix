@@ -47,6 +47,11 @@ export default function AppMain({ film, serie }) {
                                             {/* <p className="card-text">{getFlag(singleSerie.original_language)}</p> */}
                                             <p className="card-text">Voto: {showStars(singleSerie.vote_average)}</p>
                                             <p className="card-text">{singleSerie.overview.slice(0, 130)}...</p>
+                                            <button
+                                            onClick={()=> navigate(`/tv/${singleSerie.id}`)}
+                                            className="btn btn-danger">
+                                             Guarda ora
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
