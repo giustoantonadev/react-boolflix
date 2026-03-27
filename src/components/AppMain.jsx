@@ -13,7 +13,7 @@ export default function AppMain({ film, serie }) {
                         {film.map((singleFilm) => (
                             <div className="col g-3" key={singleFilm.id} >
                                 <div className="card border-3" style={{ width: "18rem" }}>
-                                    <img className="img-fluid" src={`https://image.tmdb.org/t/p/w342${singleFilm.poster_path}`} alt="film poster" />
+                                    <img className="img-fluid" src={`https://image.tmdb.org/t/p/w500${singleFilm.poster_path}`} alt="film poster" />
 
                                     <div className="overlay p-3">
                                         <div className="card-body">
@@ -38,7 +38,7 @@ export default function AppMain({ film, serie }) {
                         {serie.map((singleSerie) => (
                             <div className="col g-3" key={singleSerie.id}>
                                 <div className="card" style={{ width: "18rem" }}>
-                                    <img src={`https://image.tmdb.org/t/p/w342${singleSerie.poster_path}`} alt="film poster" />
+                                    <img src={`https://image.tmdb.org/t/p/w500${singleSerie.poster_path}`} alt="film poster" />
 
                                     <div className="overlay p-3">
                                         <div className="card-body">

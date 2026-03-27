@@ -4,6 +4,7 @@ import "/node_modules/flag-icons/css/flag-icons.min.css";
 import AppHeader from "./components/AppHeader";
 import AppMain from "./components/AppMain";
 import MoviePage from "./pages/MoviePage";
+import TvPage from "./pages/TvPage";
 
 
 function App() {
@@ -33,24 +34,23 @@ function App() {
     homePageLoad();
   }, []);
   function searchFilm() {
-    if (search === '') return
+    if (search.trim() === '') return
 
     fetch(api_url)
       .then(res => res.json())
       .then(data => {
         /* console.log(data.results); */
-        setFilm(data.results)
+        setFilm(data.results.filter(film => film.poster_path))
       })
   }
   function searchSerie() {
-    if (search === '') return
+    if (search.trim() === '') return
 
     fetch(api_url_series)
       .then(res => res.json())
       .then(data => {
         /*  console.log(data.results); */
-
-        setSerie(data.results)
+        setSerie(data.results.filter(film => film.poster_path))
       })
   }
   function handleHome() {
@@ -74,6 +74,7 @@ function App() {
         <Route path='/' element={<AppMain film={film} serie={serie} />} />
         <Route path='/search' element={<AppMain film={film} serie={serie} />} />
         <Route path='/movie/:id' element={<MoviePage film={film} />} />
+        <Route path='/tv/:id' element={<TvPage serie={serie} />} />
       </Routes>
 
     </>

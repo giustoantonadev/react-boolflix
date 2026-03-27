@@ -16,7 +16,6 @@ body {
   overflow: hidden;
 }
 
-
 .overlay {
   position: absolute;
   top: 0;
@@ -30,7 +29,6 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-
 
 .card:hover .overlay {
   opacity: 1;
