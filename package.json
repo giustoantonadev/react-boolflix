@@ -2,6 +2,7 @@
   "name": "react-boolflix",
   "private": true,
   "version": "0.0.0",
+    "homepage": "https://giustoantonadev.github.io/react-boolflix",
   "type": "module",
   "scripts": {
     "dev": "vite",
